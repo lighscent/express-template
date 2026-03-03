@@ -24,6 +24,10 @@ app.get('/', (req, res) => {
     });
 });
 
+app.use((req, res) => {
+    res.status(404).send('The page you are looking for does not exist.');
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
