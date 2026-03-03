@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const morgan = require('morgan');
 require('dotenv').config();
 
 const app = express();
@@ -15,6 +16,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Middleware to parse JSON and URL-encoded data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Middleware to log HTTP requests
+app.use(morgan('dev'));
 
 // Define a route for the home page
 app.get('/', (req, res) => {
